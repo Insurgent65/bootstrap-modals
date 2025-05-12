@@ -3,19 +3,6 @@
 /*
  * Bootstrap 5 .modal-dynamic
  * https://github.com/FranBar1966/bootstrap-5-modal-dynamic
- *
- *   class="modal-dynamic"    (modal-dynamic class REQUIRED)
- *   href="#modal-id"         set #modal-id to modal (href with id is always REQUIRED)
- *   data-title="Title"       modal title
- *   data-url="#id"           modal content by html from #id (REQUIRED #id or /url)
- *   data-url="/url"          modal content by ajax /url (REQUIRED #id or /url)
- *   data-width="100"         modal size width in px
- *   data-width="100px"       modal size width in px
- *   data-width="100%"        modal size width in %
- *   data-class="fade"        add class to modal
- *   data-template="#id"      ID of the modal  (REQUIRED)
- *   data-keyboard="false"    default true
- *   data-backdrop="static"
  */
 
 function startDynamicModal() {
@@ -50,7 +37,7 @@ function dynamicModalHandler(ev) {
     const dModalNoHead   = ev.target.dataset.noheader;
     const dModalUrl      = ev.target.dataset.url;
     const dModalFooter   = ev.target.dataset.footer;
-    const dModalNoFoot   = ev.target.dataset.nofooter;
+    const dModalNoFooter = ev.target.dataset.nofooter;
     const dModalWidth    = ev.target.dataset.width || '';
     const dModalBackdrop = ev.target.dataset.backdrop || 'false';
     const dModalKeyboard = !ev.target.dataset.keyboard || ev.target.dataset.keyboard === 'true';
@@ -79,7 +66,7 @@ function dynamicModalHandler(ev) {
         if (footer && source) footer.innerHTML = source.innerHTML;
     }
 
-    if (dModalNoFoot) {
+    if (dModalNoFooter) {
         const footer = modalElement.querySelector('.modal-footer');
         if (footer) footer.classList.add('hidden', 'd-none');
     }
