@@ -6,16 +6,16 @@
  *
  * Bootstrap modal wrapper
  *
- *   class="modal-dynamic"
+ *   class="modal-dynamic"    (modal-dynamic class REQUIRED)
  *   href="#modal-id"         set #modal-id to modal (href with id is always REQUIRED)
  *   data-title="Title"       modal title
- *   data-url="#id"           modal content by html from #id
- *   data-url="/url"          modal content by ajax /url
+ *   data-url="#id"           modal content by html from #id (REQUIRED #id or /url)
+ *   data-url="/url"          modal content by ajax /url (REQUIRED #id or /url)
  *   data-width="100"         modal size width in px
  *   data-width="100px"       modal size width in px
  *   data-width="100%"        modal size width in %
  *   data-class="fade"        add class to modal
- *   data-template="#id"      ID of the modal
+ *   data-template="#id"      ID of the modal  (REQUIRED)
  *   data-keyboard="false"    default true
  *   data-backdrop="static"
  */
