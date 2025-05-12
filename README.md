@@ -51,18 +51,18 @@ Note that you cannot mix the options with Bootstrap's native modal.
 ### Options
 
 ```code
- href="#modal-id"         set #modal-id to modal (REQUIRED)
- data-template="#id"      ID of the modal  (REQUIRED)
- data-url="#id"           modal content by html from #id (REQUIRED #id or /url)
- data-url="/url"          modal content by ajax /url (REQUIRED #id or /url)
- data-title="Title"       modal title
- data-header="#di"        header html content
- data-noheader="true"     remove modal header if true
- data-nofooter="true"     remove modal header if true
- data-width="100"         modal size width in px
- data-width="100px"       modal size width in px
- data-width="100%"        modal size width in %
- data-class="fade"        add class to modal
- data-keyboard="false"    default true
- data-backdrop="static"   default none
+href="#modal-id"         set #modal-id to modal (REQUIRED)
+data-template="#id"      ID of the modal  (REQUIRED)
+data-url="#id"           modal content by html from #id (REQUIRED #id or /url)
+data-url="/url"          modal content by ajax /url (REQUIRED #id or /url)
+data-title="Title"       modal title
+data-header="#di"        header html content
+data-noheader="true"     remove modal header if true
+data-nofooter="true"     remove modal header if true
+data-width="100"         modal size width in px
+data-width="100px"       modal size width in px
+data-width="100%"        modal size width in %
+data-class="fade"        add class to modal
+data-keyboard="false"    default true
+data-backdrop="static"   default none
  ```
