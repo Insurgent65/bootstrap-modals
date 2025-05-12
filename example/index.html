@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bootstrap 5 Modals</title>
+  <meta name="description" content="Modals with dynamically loaded content, open modals within modals and possibility to close the modal with the back button.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/flatly/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css" />
+  <style>
+    form *:not(.form-check-input):not(.alert):not(.spin) {
+      border-right: none !important;
+      border-left: none !important;
+      border-top: none !important;
+    }
+    form .input-group-text {
+      background-color: transparent !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">Modals</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/FranBar1966/bootstrap-5-modal-close-on-back">Close on back</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/FranBar1966/bootstrap-5-modal-dynamic">Modal dynamic</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ms-md-auto">
+          <li class="nav-item">
+            <a type="button" class="nav-link modal-dynamic" href="#modal-user" data-title="Sign in" data-url="login.html" data-width="475" data-class="fade" data-template="#templateUser" data-keyboard="true" data-backdrop="static">
+              Modal example
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="my-5">&nbsp;</div>
+  <div class="container">
+    <div class="page-header">
+      <div class="row">
+        <div class="col">
+          <h2>Bootstrap Modals</h2>
+          <p class="lead">Modals with dynamically loaded content, open modals within modals and possibility to close the modal with the back button.</p>
+        </div>
+        <hr>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h4>Required</h4>
+      <p class="lead">For this example we need two javascript files that you can download from: <a href="https://github.com/FranBar1966/bootstrap-5-modal-dynamic">here</a> and <a href="https://github.com/FranBar1966/bootstrap-5-modal-close-on-back">here</a> or:</p>
+    </div>
+    <pre class="bg-light my-2 rounded shadow-sm"><code>
+  &lt;script src=&quot;https://cdn.jsdelivr.net/gh/FranBar1966/bootstrap-5-modal-dynamic@master/src/modal-dynamic.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/gh/FranBar1966/bootstrap-5-modal-close-on-back@master/src/modal-close-on-back.min.js&quot;&gt;&lt;/script&gt;
+    </code></pre>
+    <p>They are independent utilities, either or both can be used independently.</p>
+
+
+    <button type="button" class="btn btn-primary me-2 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+      Simple default modal
+    </button>
+    <button type="button" class="btn btn-primary me-2 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+      Modal over modal
+    </button>
+      <button type="button" class="btn btn-primary me-2 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+      Modal over modal...
+    </button>
+    <a type="button" class="btn btn-primary modal-dynamic me-2 my-1" href="#modal-image" data-title="Image" data-url="image.html" data-width="800" data-class="fade" data-template="#templateImage" data-keyboard="true" data-backdrop="">
+      Image
+    </a>
+    <a type="button" class="btn btn-primary modal-dynamic me-2 my-1" href="#modal-user" data-title="Sign in" data-url="login.html" data-width="475" data-class="fade" data-template="#templateUser" data-keyboard="true" data-backdrop="static">
+      Login
+    </a>
+    <a type="button" class="btn btn-primary modal-dynamic me-2 my-1" href="#modal-user" data-title="Sign up" data-url="register.html" data-width="475" data-class="fade" data-template="#templateUser" data-keyboard="true" data-backdrop="static">
+      Register
+    </a>
+    <a type="button" class="btn btn-primary modal-dynamic me-2 my-1" href="#modal-user" data-title="Reminder" data-url="reminder.html" data-width="475" data-class="fade" data-template="#templateUser" data-keyboard="true" data-backdrop="static">
+      Reminder
+    </a>
+    <hr>
+
+    <div class="mt-4">
+      <h4>Simple default modal</h4>
+      <p class="lead">For the back button simply add the <i>modal-close-on-back.min.js</i> file to your page and that's it, you don't need to do anything else.</p>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+      Simple default modal
+    </button>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModal1Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModal1Label">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            You can click the Back Button to close this modal.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <pre class="bg-light my-2 rounded shadow-sm"><code>
+      &lt;button
+        type=&quot;button&quot;
+        class=&quot;btn btn-primary&quot;
+        data-bs-toggle=&quot;modal&quot;
+        data-bs-target=&quot;#exampleModal1&quot;
+      &gt;
+        Simple default modal
+      &lt;/button&gt;
+
+      &lt;div class=&quot;modal fade&quot; id=&quot;exampleModal1&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;exampleModal1Label&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+          &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+              &lt;h1 class=&quot;modal-title fs-5&quot; id=&quot;exampleModal1Label&quot;&gt;Modal title&lt;/h1&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+              You can click the Back Button to close this modal.
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    </code></pre>
+
+    <div class="mt-4">
+      <h4>Modal over modal</h4>
+      <p class="lead">You can open a modal inside another modal. The container can be of any kind, but the one that is opened must be: modal-dynamic</p>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+      Modal over modal
+    </button>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModal2Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModal2Label">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              <a type="button" class="btn btn-primary modal-dynamic" href="#modal-id" data-title="Modal over modal" data-url="#modal-content" data-width="350" data-class="fade" data-template="#modalChoice" data-keyboard="true" data-backdrop="">
+                Open modal
+              </a>
+            </p>
+            <p>You can click the Back Button to close modals.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <pre class="bg-light my-2 rounded shadow-sm"><code>
+      &lt;!-- First modal --&gt;
+      &lt;button
+        type=&quot;button&quot;
+        class=&quot;btn btn-primary&quot;
+        data-bs-toggle=&quot;modal&quot;
+        data-bs-target=&quot;#exampleModal2&quot;
+      &gt;
+        Modal over modal
+      &lt;/button&gt;
+
+      &lt;!-- Within the first modal --&gt;
+      &lt;a type=&quot;button&quot;
+        class=&quot;btn btn-primary modal-dynamic&quot;
+        href=&quot;#modal-over-over&quot;
+        data-title=&quot;Modal over modal&quot;
+        data-url=&quot;#modal-content-over&quot;
+        data-width=&quot;400&quot;
+        data-class=&quot;fade&quot;
+        data-template=&quot;#template1&quot;
+        data-keyboard=&quot;true&quot;
+        data-backdrop=&quot;&quot;&gt;
+          Open modal
+      &lt;/a&gt;
+    </code></pre>
+
+    <div class="mt-4">
+      <h4>Modal over modal... over modal...</h4>
+      <p class="lead">You can open a modal inside another modal and another one... the limit is the usability.</p>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+      Modal over modal...
+    </button>
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModal3Label" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModal3Label">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              <a type="button" class="btn btn-primary modal-dynamic" href="#modal-over-over" data-title="Modal over modal" data-url="#modal-content-over" data-width="400" data-class="fade" data-template="#template1" data-keyboard="true" data-backdrop="">
+                Open modal
+              </a>
+            </p>
+            <p>You can click the Back Button to close modals.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <pre class="bg-light my-2 rounded shadow-sm"><code>
+      &lt;!-- First modal --&gt;
+      &lt;button
+        type=&quot;button&quot;
+        class=&quot;btn btn-primary&quot;
+        data-bs-toggle=&quot;modal&quot;
+        data-bs-target=&quot;#exampleModal2&quot;
+      &gt;
+        Modal over modal
+      &lt;/button&gt;
+
+      &lt;!--Modals --&gt;
+      &lt;div class=&quot;modal fade&quot; id=&quot;exampleModal3&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;exampleModal3Label&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+          &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+              &lt;h1 class=&quot;modal-title fs-5&quot; id=&quot;exampleModal3Label&quot;&gt;Modal title&lt;/h1&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+              &lt;p&gt;
+                &lt;a type=&quot;button&quot;
+                  class=&quot;btn btn-primary modal-dynamic&quot;
+                  href=&quot;#modal-over-over&quot;
+                  data-title=&quot;Modal over modal&quot;
+                  data-url=&quot;#modal-content-over&quot;
+                  data-width=&quot;400&quot;
+                  data-class=&quot;fade&quot;
+                  data-template=&quot;#template1&quot;
+                  data-keyboard=&quot;true&quot;
+                  data-backdrop=&quot;&quot;&gt;
+                  Open modal
+                &lt;/a&gt;
+              &lt;/p&gt;
+              &lt;p&gt;You can click the Back Button to close modals.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;div class=&quot;modal fade&quot; id=&quot;template1&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;template1Label&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;div class=&quot;modal-dialog shadow&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+          &lt;div class=&quot;modal-header&quot;&gt;
+            &lt;h1 class=&quot;modal-title fs-5&quot; id=&quot;template1Label&quot;&gt;Modal title&lt;/h1&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;modal-body&quot;&gt;
+            &lt;div class=&quot;spinner-border&quot; role=&quot;status&quot;&gt;
+              &lt;span class=&quot;sr-only&quot;&gt;Loading...&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;modal-footer&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;d-none&quot;&gt;
+      &lt;div id=&quot;modal-content-over&quot;&gt;
+        &lt;h5&gt;Over... over...&lt;/h5&gt;
+          &lt;a type=&quot;button&quot;
+            class=&quot;btn btn-primary modal-dynamic&quot;
+            href=&quot;#modal-id&quot;
+            data-title=&quot;Question&quot;
+            data-url=&quot;#modal-content&quot;
+            data-width=&quot;350&quot;
+            data-class=&quot;fade&quot;
+            data-template=&quot;#modalChoice&quot;
+            data-keyboard=&quot;true&quot;
+            data-backdrop=&quot;&quot;&gt;
+              Open modal question
+          &lt;/a&gt;
+        &lt;p class=&quot;mt-2&quot;&gt;Close a bootstrap modal with back button&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;modal p-4 py-md-5&quot; id=&quot;modalChoice&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot;&gt;
+      &lt;div class=&quot;modal-dialog shadow&quot;&gt;
+        &lt;div class=&quot;modal-content rounded-3 shadow&quot;&gt;
+          &lt;div class=&quot;modal-body p-4 text-center&quot;&gt;
+            &lt;div class=&quot;spinner-border&quot; role=&quot;status&quot;&gt;
+              &lt;span class=&quot;sr-only&quot;&gt;Loading...&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;modal-footer flex-nowrap p-0&quot;&gt; &lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end&quot;  data-bs-dismiss=&quot;modal&quot;&gt;&lt;strong&gt;Yes&lt;/strong&gt;&lt;/button&gt; &lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0&quot; data-bs-dismiss=&quot;modal&quot;&gt;No thanks&lt;/button&gt; &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;d-none&quot;&gt;
+      &lt;div id=&quot;modal-content&quot;&gt;
+        &lt;h5&gt;Question&lt;/h5&gt;
+        &lt;p&gt;Close a bootstrap modal with back button&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    </code></pre>
+
+    <div class="mt-4">
+      <h4>Image</h4>
+      <p class="lead">You can dynamically load other types of content, such as images, into the modal.</p>
+    </div>
+    <a type="button" class="btn btn-primary modal-dynamic" href="#modal-image" data-title="Image" data-url="image.html" data-width="800" data-class="fade" data-template="#templateImage" data-keyboard="true" data-backdrop="">
+      Image
+    </a>
+    <pre class="bg-light my-2 rounded shadow-sm"><code>
+      &lt;a type=&quot;button&quot;
+        class=&quot;btn btn-primary modal-dynamic&quot;
+        href=&quot;#modal-image&quot;
+        data-title=&quot;Image&quot;
+        data-url=&quot;image.html&quot;
+        data-width=&quot;800&quot;
+        data-class=&quot;fade&quot;
+        data-template=&quot;#templateImage&quot;
+        data-keyboard=&quot;true&quot;
+        data-backdrop=&quot;&quot;&gt;
+          Image
+      &lt;/a&gt;
+
+      &lt;div class=&quot;modal&quot; id=&quot;templateImage&quot; tabindex=&quot;-1&quot;&gt;
+        &lt;div class=&quot;modal-dialog modal-dialog-centered&quot;&gt;
+          &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-body p-0 m-0 shadow&quot; data-bs-dismiss=&quot;modal&quot;&gt;
+              &lt;div class=&quot;spinner-border&quot; role=&quot;status&quot;&gt;
+                &lt;div class=&quot;spinner-border&quot; role=&quot;status&quot;&gt;
+                  &lt;span class=&quot;sr-only&quot;&gt;Loading...&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    </code></pre>
+
+
+    <div class="mt-4">
+      <h4>Login example</h4>
+      <p class="lead">You can group a modal with the same ID, to display different content loaded dynamically in the same modal.</p>
+    </div>
+    <a type="button" class="btn btn-primary modal-dynamic" href="#modal-user" data-title="Sign up" data-url="login.html" data-width="475" data-class="fade" data-template="#templateUser" data-keyboard="true" data-backdrop="static">
+      Example login
+    </a>
+    <pre class="bg-light my-2 rounded shadow-sm"><code>
+      &lt;div class=&quot;modal fade&quot; id=&quot;templateUser&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;template1Label&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;div class=&quot;modal-dialog shadow&quot;&gt;
+          &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+              &lt;h1 class=&quot;modal-title fs-5&quot; id=&quot;template1Label&quot;&gt;Modal title&lt;/h1&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body mx-4 my-3&quot;&gt;
+              &lt;div class=&quot;spinner-border&quot; role=&quot;status&quot;&gt;
+                &lt;span class=&quot;sr-only&quot;&gt;Loading...&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+              &lt;div class=&quot;ms-md-0&quot;&gt;
+                &lt;a type=&quot;button&quot;
+                  class=&quot;btn btn-primary modal-dynamic&quot;
+                  href=&quot;#modal-user&quot;
+                  data-title=&quot;Reminder&quot;
+                  data-url=&quot;reminder.html&quot;
+                  data-width=&quot;475&quot;
+                  data-class=&quot;fade&quot;
+                  data-template=&quot;#templateUser&quot;
+                  data-keyboard=&quot;true&quot;
+                  data-backdrop=&quot;static&quot;&gt;
+                    Reminder
+                &lt;/a&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;ms-md-auto&quot;&gt;
+                &lt;a type=&quot;button&quot;
+                  class=&quot;btn btn-primary modal-dynamic&quot;
+                  href=&quot;#modal-user&quot;
+                  data-title=&quot;Sign in&quot;
+                  data-url=&quot;login.html&quot;
+                  data-width=&quot;475&quot;
+                  data-class=&quot;fade&quot;
+                  data-template=&quot;#templateUser&quot;
+                  data-keyboard=&quot;true&quot;
+                  data-backdrop=&quot;static&quot;&gt;
+                    Login
+                &lt;/a&gt;
+                &lt;a type=&quot;button&quot;
+                    class=&quot;btn btn-primary modal-dynamic&quot;
+                    href=&quot;#modal-user&quot;
+                    data-title=&quot;Sign up&quot;
+                    data-url=&quot;register.html&quot;
+                    data-width=&quot;475&quot;
+                    data-class=&quot;fade&quot;
+                    data-template=&quot;#templateUser&quot;
+                    data-keyboard=&quot;true&quot;
+                    data-backdrop=&quot;static&quot;&gt;
+                      Register
+                &lt;/a&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    </code></pre>
+  </div>
+
+  <!-- Modal content -->
+
+  <div class="d-none">
+    <div id="modal-content">
+      <h5>Question</h5>
+      <p>Close a bootstrap modal with back button</p>
+    </div>
+  </div>
+
+  <div class="d-none">
+    <div id="modal-content-help">
+      <h5>Help</h5>
+      <p class="mb-0">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ut vestibulum lectus.
+        Morbi et imperdiet purus. Integer gravida fringilla congue.
+      </p>
+    </div>
+  </div>
+
+  <div class="d-none">
+    <div id="modal-content-over">
+      <h5>Over... over...</h5>
+      <a type="button" class="btn btn-primary modal-dynamic" href="#modal-id" data-title="Question" data-url="#modal-content" data-width="350" data-class="fade" data-template="#modalChoice" data-keyboard="true" data-backdrop="">
+        Open modal question
+      </a>
+      <p class="mt-2">Close a bootstrap modal with back button</p>
+    </div>
+  </div>
+
+  <!-- Modal templates -->
+
+  <div class="modal p-4 py-md-5" id="modalChoice" tabindex="-1" role="dialog">
+    <div class="modal-dialog shadow">
+      <div class="modal-content rounded-3 shadow">
+        <div class="modal-body p-4 text-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="modal-footer flex-nowrap p-0"> <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" data-bs-dismiss="modal"><strong>Yes</strong></button> <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button> </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="template1" tabindex="-1" aria-labelledby="template1Label" aria-hidden="true">
+    <div class="modal-dialog shadow">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="template1Label">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal p-4 py-md-5" id="templateHelp" tabindex="-1" role="dialog">
+    <div class="modal-dialog shadow">
+      <div class="modal-content rounded-3">
+        <div class="modal-body p-4">
+          <div class="spinner-border" role="status">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-light btn-sm ms-md-auto m-2 mt-0" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="templateImage" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body p-0 m-0 shadow" data-bs-dismiss="modal">
+          <div class="spinner-border" role="status">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="templateUser" tabindex="-1" aria-labelledby="template1Label" aria-hidden="true">
+    <div class="modal-dialog shadow">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="template1Label">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mx-md-4 my-3">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="ms-0">
+            <a type="button" class="btn btn-primary modal-dynamic" href="#modal-user" data-title="Reminder" data-url="reminder.html" data-width="475" data-class="fade" data-template="#templateUser" data-keyboard="true" data-backdrop="static">
+              Reminder
+            </a>
+          </div>
+          <div class="ms-auto">
+            <a type="button" class="btn btn-primary modal-dynamic" href="#modal-user" data-title="Sign in" data-url="login.html" data-width="475" data-class="fade" data-template="#templateUser" data-keyboard="true" data-backdrop="static">
+              Login
+            </a>
+            <a type="button" class="btn btn-primary modal-dynamic" href="#modal-user" data-title="Sign up" data-url="register.html" data-width="475" data-class="fade" data-template="#templateUser" data-keyboard="true" data-backdrop="static">
+              Register
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="text-center w-100 mx-auto my-5">
+      <hr class="mx-2">
+      <div>
+        <p>
+          Bootstrap 5 modals
+          <a class="" href="https://github.com/FranBar1966/bootstrap-5-modal-close-on-back">close on back</a>,
+          <a class="" href="https://github.com/FranBar1966/bootstrap-5-modal-dynamic">modal dynamic</a>.
+          Themes from <a href="https://bootswatch.com/">Bootswatch</a> and <a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/FranBar1966/bootstrap-5-modal-dynamic@master/src/modal-dynamic.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/FranBar1966/bootstrap-5-modal-close-on-back@master/src/modal-close-on-back.min.js"></script>
+</body>
+
+</html>
