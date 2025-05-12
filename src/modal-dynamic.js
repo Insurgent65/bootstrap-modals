@@ -122,7 +122,7 @@ function dynamicModalHandler(ev) {
 
     if (dModalUrl.startsWith('#')) {
         const contentElement = document.querySelector(dModalUrl);
-        modalBodyElement.innerHTML = contentElement ? contentElement.innerHTML : 'Contenido no encontrado';
+        modalBodyElement.innerHTML = contentElement ? contentElement.innerHTML : 'ERROR: Content not found';
     } else {
         fetch(dModalUrl, {
             method: 'GET',
