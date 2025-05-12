@@ -4,7 +4,7 @@
  * Bootstrap .modal-dynamic
  * https://github.com/FranBar1966/bootstrap-5-modal-dynamic
  *
- * Bootstrap modal wrapper
+ * Bootstrap 5 modal
  *
  *   class="modal-dynamic"    (modal-dynamic class REQUIRED)
  *   href="#modal-id"         set #modal-id to modal (href with id is always REQUIRED)
