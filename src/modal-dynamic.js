@@ -143,6 +143,12 @@ function dynamicModalHandler(ev) {
         })
         .catch(error => {
             modalBodyElement.innerHTML = error.message;
+            window.dispatchEvent(new CustomEvent('neutralFetchError', {
+                detail: {
+                    element: modalElement,
+                    url: dModalUrl
+                }
+            }));
         });
     }
 }
