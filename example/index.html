@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Bootstrap 5 Modals</title>
+  <title>Bootstrap 5 Modals dynamic content</title>
   <meta name="description" content="Modals with dynamically loaded content, open modals within modals and possibility to close the modal with the back button.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/flatly/bootstrap.min.css" />
@@ -22,7 +22,7 @@
 <body>
   <div class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark">
     <div class="container">
-      <a href="index.html" class="navbar-brand">Modals</a>
+      <a href="https://franbar1966.github.io/bootstrap-5-modal-dynamic/example/" class="navbar-brand">Modals</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -65,8 +65,6 @@
   &lt;script src=&quot;https://cdn.jsdelivr.net/gh/FranBar1966/bootstrap-5-modal-close-on-back@master/src/modal-close-on-back.min.js&quot;&gt;&lt;/script&gt;
     </code></pre>
     <p>They are independent utilities, either or both can be used independently.</p>
-
-
     <button type="button" class="btn btn-primary me-2 my-1" data-bs-toggle="modal" data-bs-target="#exampleModal1">
       Simple default modal
     </button>
@@ -91,7 +89,7 @@
     <hr>
 
     <div class="mt-4">
-      <h4>Simple default modal</h4>
+      <h4>Close modal on back button</h4>
       <p class="lead">For the back button simply add the <i>modal-close-on-back.min.js</i> file to your page and that's it, you don't need to do anything else.</p>
     </div>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
@@ -361,7 +359,6 @@
       &lt;/div&gt;
     </code></pre>
 
-
     <div class="mt-4">
       <h4>Login example</h4>
       <p class="lead">You can group a modal with the same ID, to display different content loaded dynamically in the same modal.</p>
@@ -428,6 +425,104 @@
         &lt;/div&gt;
       &lt;/div&gt;
     </code></pre>
+
+    <div class="mt-4">
+      <h4>Modal open modal</h4>
+      <p class="lead">The native behavior when opening a modal in another modal is to close the current modal before opening the new modal. In this case for the back button to work it is necessary to "fade".</p>
+    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalA">
+      Open modal
+    </button>
+    <pre class="bg-light my-2 rounded shadow-sm"><code>
+      &lt;div class=&quot;modal fade&quot; id=&quot;modalA&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;modalALabel&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+          &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+              &lt;h1 class=&quot;modal-title fs-5&quot; id=&quot;modalALabel&quot;&gt;Modal A&lt;/h1&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+              In this case for the back button to work it is necessary to "fade"
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#modalA&quot; disabled&gt;
+                Open native modal  A
+              &lt;/button&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#modalB&quot;&gt;
+                Open native modal  B
+              &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;modal fade&quot; id=&quot;modalB&quot; tabindex=&quot;-1&quot; aria-labelledby=&quot;modalBLabel&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;div class=&quot;modal-dialog&quot;&gt;
+          &lt;div class=&quot;modal-content&quot;&gt;
+            &lt;div class=&quot;modal-header&quot;&gt;
+              &lt;h1 class=&quot;modal-title fs-5&quot; id=&quot;modalBLabel&quot;&gt;Modal B&lt;/h1&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-body&quot;&gt;
+              In this case for the back button to work it is necessary to "fade"
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#modalA&quot;&gt;
+                Open native modal  A
+              &lt;/button&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#modalB&quot; disabled&gt;
+                Open native modal  B
+              &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;modal-footer&quot;&gt;
+              &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-bs-dismiss=&quot;modal&quot;&gt;Close&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    </code></pre>
+    <div class="modal fade" id="modalA" tabindex="-1" aria-labelledby="modalALabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalALabel">Modal A</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>In this case for the back button to work it is necessary to "fade"</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalA" disabled>
+              Open native modal  A
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalB">
+              Open native modal  B
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="modalB" tabindex="-1" aria-labelledby="modalBLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalBLabel">Modal B</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>In this case for the back button to work it is necessary to "fade"</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalA">
+              Open native modal  A
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalB" disabled>
+              Open native modal  B
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Modal content -->

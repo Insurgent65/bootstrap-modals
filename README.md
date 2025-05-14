@@ -66,3 +66,111 @@ data-class="fade"        add class to modal
 data-keyboard="false"    default true
 data-backdrop="static"   default none
  ```
+
+### Same modal with different dynamic content
+
+You can group a modal with the same ID, to display different content loaded dynamically in the same modal.
+
+```html
+<a type="button"
+   class="btn btn-primary modal-dynamic"
+   href="#modal-user"
+   data-title="Sign up"
+   data-url="login.html"
+   data-width="475"
+   data-class="fade"
+   data-template="#templateUser"
+   data-keyboard="true"
+   data-backdrop="static"
+   >
+    Example login
+</a>
+
+<div class="modal fade" id="templateUser" tabindex="-1" aria-labelledby="template1Label" aria-hidden="true">
+  <div class="modal-dialog shadow">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="template1Label">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body mx-4 my-3">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="ms-md-0">
+          <a type="button"
+            class="btn btn-primary modal-dynamic"
+            href="#modal-user"
+            data-title="Reminder"
+            data-url="reminder.html"
+            data-width="475"
+            data-class="fade"
+            data-template="#templateUser"
+            data-keyboard="true"
+            data-backdrop="static">
+              Reminder
+          </a>
+        </div>
+        <div class="ms-md-auto">
+          <a type="button"
+            class="btn btn-primary modal-dynamic"
+            href="#modal-user"
+            data-title="Sign in"
+            data-url="login.html"
+            data-width="475"
+            data-class="fade"
+            data-template="#templateUser"
+            data-keyboard="true"
+            data-backdrop="static">
+              Login
+          </a>
+          <a type="button"
+              class="btn btn-primary modal-dynamic"
+              href="#modal-user"
+              data-title="Sign up"
+              data-url="register.html"
+              data-width="475"
+              data-class="fade"
+              data-template="#templateUser"
+              data-keyboard="true"
+              data-backdrop="static">
+                Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Modal over modal
+
+You can open a modal inside another modal. The container can be of any kind, but the one that is opened must be: modal-dynamic
+
+```html
+<!-- First modal -->
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal2"
+>
+  Modal over modal
+</button>
+
+<!-- Within the first modal -->
+<a type="button"
+  class="btn btn-primary modal-dynamic"
+  href="#modal-over-over"
+  data-title="Modal over modal"
+  data-url="#modal-content-over"
+  data-width="400"
+  data-class="fade"
+  data-template="#template1"
+  data-keyboard="true"
+  data-backdrop="">
+    Open modal
+</a>
+```
