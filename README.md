@@ -143,6 +143,34 @@ You can group a modal with the same ID, to display different content loaded dyna
     </div>
   </div>
 </div>
+```
 
+### Modal over modal
 
+You can open a modal inside another modal. The container can be of any kind, but the one that is opened must be: modal-dynamic
+
+```html
+<!-- First modal -->
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal2"
+>
+  Modal over modal
+</button>
+
+<!-- Within the first modal -->
+<a type="button"
+  class="btn btn-primary modal-dynamic"
+  href="#modal-over-over"
+  data-title="Modal over modal"
+  data-url="#modal-content-over"
+  data-width="400"
+  data-class="fade"
+  data-template="#template1"
+  data-keyboard="true"
+  data-backdrop="">
+    Open modal
+</a>
 ```
